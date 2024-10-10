@@ -12,3 +12,4 @@ www/setup/setup-cli.php
 www/setup/setup.conf.php
 www/setup/setup.php
 www/setup/setup.css
+vendor

@@ -97,6 +97,7 @@ function xentral_autoloader($class) {
     'Xentral\Core\Installer\InstallerCacheConfig'=>__DIR__.'/classes/Core/Installer/InstallerCacheConfig.php',
     'Xentral\Core\Installer\InstallerCacheWriter'=>__DIR__.'/classes/Core/Installer/InstallerCacheWriter.php',
     'Xentral\Core\Installer\Psr4ClassNameResolver'=>__DIR__.'/classes/Core/Installer/Psr4ClassNameResolver.php',
+    'Zugferd'=>__DIR__.'/www/lib/dokumente/class.zugferd.php',
   );
   if(isset($classes[$class]) && is_file($classes[$class]))
   {
