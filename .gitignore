@@ -4,3 +4,11 @@ userdata
 www/cache/
 node_modules/
 www/themes/new/css/custom.css
+gitinfo.json
+conf/main.conf.php
+vendor/ezyang/htmlpurifier/library/HTMLPurifier/DefinitionCache/Serializer/HTML/4.13.0,f474c0a322b208e83d22d3aef33ecb184bc71d31,1.ser
+.gitignore
+www/setup/setup-cli.php
+www/setup/setup.conf.php
+www/setup/setup.php
+www/setup/setup.css
