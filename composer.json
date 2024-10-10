@@ -1,0 +1,61 @@
+{
+    "name": "openxe-org/openxe",
+    "description": "OpenXE - The free ERP",
+    "require": {
+        "php": "^7.4",
+        "ext-json": "*",
+        "aura/sqlquery": "^2.7.1",
+        "fiskaly/fiskaly-sdk-php": "^1.2",
+        "guzzlehttp/guzzle": "^6.5.2",
+        "laminas/laminas-mail": "^2.10.0",
+        "league/flysystem": "^1.0.66",
+        "league/oauth1-client": "^1.7.0",
+        "lfkeitel/phptotp": "^1.0.0",
+        "nikic/fast-route": "^1.3.0",
+        "phpmailer/phpmailer": "^6.1.5",
+        "phpseclib/phpseclib": "^2.0.27",
+        "rakit/validation": "^0.22.3",
+        "sabre/dav": "^4.0.0",
+        "smarty/smarty": "^3.1.34",
+        "swiss-payment-slip/swiss-payment-slip": "0.13.0 as 0.11.1",
+        "swiss-payment-slip/swiss-payment-slip-fpdf": "~0.6.0",
+        "y0lk/oauth1-etsy": "^1.0.2",
+        "league/oauth2-client": "^2.5",
+        "aws/aws-sdk-php": "^3.158",
+        "ezyang/htmlpurifier": "^4.13",
+        "tecnickcom/tcpdf": "^6.3",
+        "league/color-extractor": "^0.3.2",
+        "maksimovic/getallheaders": "^4.0.0",
+        "true/punycode": "~2.0",
+        "horstoeko/zugferd": "^1.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8.5",
+        "fakerphp/faker": "^1.11",
+        "friendsofphp/php-cs-fixer": "^2.16"
+    },
+    "replace": {
+        "itbz/fpdf": "*",
+        "laminas/laminas-zendframework-bridge": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Xentral\\": "classes"
+        },
+        "classmap": ["www/lib/versandarten/"]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests"
+        }
+    },
+    "config": {
+        "platform": {
+            "php": "7.4"
+        },
+        "optimize-autoloader": true
+    },
+    "scripts": {
+        "lint:show": "./vendor/bin/php-cs-fixer fix --allow-risky=yes --show-progress dots --dry-run --diff --diff-format=udiff --verbose"
+    }
+}

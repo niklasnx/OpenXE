@@ -15,6 +15,8 @@
 <?php
 use Xentral\Components\Pdf\Exception\PdfComponentExceptionInterface;
 use Xentral\Components\Pdf\PdfMerger;
+use horstoeko\zugferd\ZugferdDocumentBuilder;
+use horstoeko\zugferd\ZugferdProfiles;
 
 include_once __DIR__.'/_gen/rechnung.php';
 //require_once("Payment/DTA.php"); //PEAR
@@ -74,6 +76,8 @@ class Rechnung extends GenRechnung
     $this->app->ActionHandler("dateien","RechnungDateien");
     $this->app->ActionHandler("pdffromarchive","RechnungPDFfromArchiv");
     $this->app->ActionHandler("archivierepdf","RechnungArchivierePDF");
+    $this->app->ActionHandler("zugferd","RechnungZugferd");
+
 
     $this->app->ActionHandler("summe","RechnungSumme"); // nur fuer rechte
     $this->app->ActionHandler("einkaufspreise","RechnungEinkaufspreise");
@@ -1241,6 +1245,15 @@ class Rechnung extends GenRechnung
     $this->RechnungList();
   }
 
+# XRECHNUNG TEST ND 09.10.2024
+  function RechnungZugferd()
+  {
+    $id = $this->app->Secure->GetGET('id');
+    $zugferd = new Zugferd($this->app);
+    $zugferd->CreateZugferdXML(id: $id);
+  }
+
+
   function RechnungSuche()
   {
     $this->app->Tpl->Set('UEBERSCHRIFT','Rechnungen');
@@ -1309,6 +1322,8 @@ class Rechnung extends GenRechnung
     $this->app->Tpl->Set('KURZUEBERSCHRIFT2',"$name Rechnung $belegnr");
 
     $this->app->erp->RechnungNeuberechnen($id);
+
+    $this->app->erp->MenuEintrag("index.php?module=rechnung&action=zugferd&id=$id",'Zugferd');
 
     $status = $invoiceArr['status'];
 
@@ -2220,7 +2235,7 @@ class Rechnung extends GenRechnung
               try {
                 /** @var PdfMerger $pdfMerger */
                 $pdfMerger = $this->app->Container->get('PdfMerger');
-                $mergeOutputPath = realpath($this->app->erp->GetTMP()) . '/' . uniqid('sammelpdf_', true) . '.pdf';
+                $mergeOutputPath = realpath($this->app->erp->GetTMP()) . '/' . uniqid('sammelpdf_', more_entropy: true) . '.pdf';
                 $pdfMerger->merge($tmpfile, $mergeOutputPath);
 
                 foreach($tmpfile as $key=>$value) {
