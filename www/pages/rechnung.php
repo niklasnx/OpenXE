@@ -518,6 +518,7 @@ class Rechnung extends GenRechnung
           case 'manuellbezahltmarkiert': window.location.href='index.php?module=rechnung&action=manuellbezahltmarkiert&id=%value%'; break;
           case 'manuellbezahltentfernen': window.location.href='index.php?module=rechnung&action=manuellbezahltentfernen&id=%value%'; break;
           case 'freigabe': window.location.href='index.php?module=rechnung&action=freigabe&id=%value%'; break;
+          case 'zugferd': window.location.href='index.php?module=rechnung&action=zugferd&id=%value%'; break;
           $zertifikatcase
           $casebelegeimport
           $casecustom
@@ -540,6 +541,7 @@ class Rechnung extends GenRechnung
       $undostorno
       $optionbelegeimport
       <option value=\"pdf\">PDF &ouml;ffnen</option>
+      <option value=\"zugferd\">XRechnung &ouml;ffnen</option>
       $bezahlt
       $zertifikatoption
       $optioncustom
@@ -1322,8 +1324,6 @@ class Rechnung extends GenRechnung
     $this->app->Tpl->Set('KURZUEBERSCHRIFT2',"$name Rechnung $belegnr");
 
     $this->app->erp->RechnungNeuberechnen($id);
-
-    $this->app->erp->MenuEintrag("index.php?module=rechnung&action=zugferd&id=$id",'Zugferd');
 
     $status = $invoiceArr['status'];
 
